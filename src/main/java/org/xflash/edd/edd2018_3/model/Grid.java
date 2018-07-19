@@ -10,4 +10,10 @@ public class Grid {
         this.h = h;
         this.cells = new int[h][w];
     }
+
+    public Grid(int[][] cells) {
+        this.h = cells.length;
+        this.w = cells[0].length;
+        this.cells = cells;
+    }
 }

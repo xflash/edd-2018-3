@@ -1,6 +1,8 @@
 package org.xflash.edd.edd2018_3.printer;
 
 import org.xflash.edd.edd2018_3.model.Grid;
+import org.xflash.edd.edd2018_3.model.GridSegment;
+import org.xflash.edd.edd2018_3.model.GridSolution;
 
 import java.io.PrintStream;
 
@@ -37,5 +39,11 @@ public class GridPrinter {
             os.print("---");
         }
         os.println("+");
+    }
+
+    public void print(GridSolution solution, PrintStream out) {
+        for (GridSegment segment : solution) {
+            out.println(segment);
+        }
     }
 }
