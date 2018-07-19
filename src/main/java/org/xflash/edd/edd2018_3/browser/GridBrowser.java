@@ -2,7 +2,7 @@ package org.xflash.edd.edd2018_3.browser;
 
 import org.xflash.edd.edd2018_3.model.Coord;
 import org.xflash.edd.edd2018_3.model.Grid;
-import org.xflash.edd.edd2018_3.model.GridSegment;
+import org.xflash.edd.edd2018_3.model.Segment;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -59,35 +59,35 @@ public class GridBrowser {
         return opt.get();
     }
 
-    public Collection<GridSegment> buildOptions(int initial, Coord coord) {
+    public Collection<Segment> buildOptions(int initial, Coord coord) {
 
-        List<GridSegment> segs = new ArrayList<>();
+        List<Segment> segs = new ArrayList<>();
 
         Set<Coord> crosses = new HashSet<Coord>();
         for (int x = 0; x < coord.x; x++) {
             Coord c = Coord.c(x, coord.y);
-            Collection<GridSegment> segs2 = ensure4(c, coord, initial, crosses);
+            Collection<Segment> segs2 = ensure4(c, coord, initial, crosses);
             if (segs2 == null)
                 break;
             segs.addAll(segs2);
         }
         for (int x = coord.x; x < grid.w; x++) {
             Coord c = Coord.c(x, coord.y);
-            Collection<GridSegment> segs2 = ensure4(c, coord, initial, crosses);
+            Collection<Segment> segs2 = ensure4(c, coord, initial, crosses);
             if (segs2 == null)
                 break;
             segs.addAll(segs2);
         }
         for (int y = 0; y < coord.y; y++) {
             Coord c = Coord.c(coord.x, y);
-            Collection<GridSegment> segs2 = ensure4(c, coord, initial, crosses);
+            Collection<Segment> segs2 = ensure4(c, coord, initial, crosses);
             if (segs2 == null)
                 break;
             segs.addAll(segs2);
         }
         for (int y = coord.y; y < grid.h; y++) {
             Coord c = Coord.c(coord.x, y);
-            Collection<GridSegment> segs2 = ensure4(c, coord, initial, crosses);
+            Collection<Segment> segs2 = ensure4(c, coord, initial, crosses);
             if (segs2 == null)
                 break;
             segs.addAll(segs2);
@@ -96,15 +96,15 @@ public class GridBrowser {
         return segs;
     }
 
-    Collection<GridSegment> ensure4(Coord c, Coord coord, int initial, Set<Coord> crosses) {
-        ArrayList<GridSegment> segs = new ArrayList<>();
+    Collection<Segment> ensure4(Coord c, Coord coord, int initial, Set<Coord> crosses) {
+        ArrayList<Segment> segs = new ArrayList<>();
         if (c.equals(coord)) return Collections.emptyList();
 
         int pick = pick(c);
         if (pick > initial + 1)
             return null;
         if (pick == initial + 1 || pick == 0 || (pick == -1 && !crosses.contains(c))) {
-            segs.add(GridSegment.c(coord, c));
+            segs.add(Segment.c(coord, c));
             if (pick == -1) {
                 crosses.add(c);
             }

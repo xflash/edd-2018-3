@@ -1,16 +1,16 @@
 package org.xflash.edd.edd2018_3.model;
 
-public class GridSegment {
+public class Segment {
     final Coord from;
     final Coord to;
 
-    private GridSegment(Coord from, Coord to) {
+    private Segment(Coord from, Coord to) {
         this.from = from;
         this.to = to;
     }
 
-    public static GridSegment c(Coord from, Coord to) {
-        return new GridSegment(from, to);
+    public static Segment c(Coord from, Coord to) {
+        return new Segment(from, to);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class GridSegment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GridSegment that = (GridSegment) o;
+        Segment that = (Segment) o;
 
         if (from != null ? !from.equals(that.from) : that.from != null) return false;
         return to != null ? to.equals(that.to) : that.to == null;

@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class GridSolution implements Iterable<GridSegment> {
+public class GridSolution implements Iterable<GridPath> {
 
-    private List<GridSegment> segments = new ArrayList<>();
+    private List<GridPath> paths = new ArrayList<>();
 
     public GridSolution() {
 
     }
 
     @Override
-    public Iterator<GridSegment> iterator() {
-        return segments.listIterator();
+    public Iterator<GridPath> iterator() {
+        return paths.listIterator();
     }
 }
