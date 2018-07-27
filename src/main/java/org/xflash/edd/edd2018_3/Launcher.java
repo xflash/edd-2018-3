@@ -15,9 +15,7 @@ public class Launcher {
         GridPrinter printer = new GridPrinter(grid);
         printer.print(System.out);
 
-        GridSolverFactory gridSolverFactory = new GridSolverFactory();
-
-        GridSolver gridSolver = gridSolverFactory.bruteForce(grid);
+        GridSolver gridSolver = GridSolverFactory.bruteForce(grid);
         for (GridSolution solution : gridSolver.solve()) {
             printer.print(solution, System.out);
         }
